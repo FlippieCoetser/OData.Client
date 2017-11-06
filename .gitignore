@@ -1,4 +1,4 @@
 node_modules/
 desktop.ini
-test/report/
-test/steps/*.js
+E2E/report/
+E2E/steps/*.js
