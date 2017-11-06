@@ -1,7 +1,8 @@
 module.exports = function (wallaby) {
   return {
     files: [
-      'source/entities/*.ts'
+      'src/*.ts',
+      'demo/**/*.ts'
     ],
     tests: [
       'test/*.test.ts'

@@ -1,16 +1,24 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "noImplicitAny": false,
         "removeComments": true,
+        "noLib": false,
         "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
         "typeRoots": [
-            "./node_modules/@types/"
+            "./node_modules/@types"
         ]
     },
     "include": [
-        "./test/steps/*.ts"
+        "./src/**/*.ts",
+        "./demo/**/*.ts",
+        "./test/**/*.ts"
     ]
 }

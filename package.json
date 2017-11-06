@@ -4,9 +4,13 @@
   "description": "Typescript OData Client",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc -p tsconfig.json",
-    "test": "cucumberjs E2E/features -r E2E/steps -f progress -f json:E2E/report/report.json",
-    "posttest": "node ./task/report.js"
+    "preE2E": "tsc -p typescript.E2E.json",
+    "E2E": "cucumberjs E2E/features -r E2E/steps -f progress -f json:E2E/report/report.json",
+    "postE2E": "node ./task/report.js",
+    "lint": "tslint -c tslint.json ./src/**/*.ts",
+    "build": "tsc -p tsconfig.json",
+    "pretest": "npm run lint && npm run build",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,9 +29,25 @@
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/cucumber": "^2.0.4",
+    "@types/mocha": "^2.2.44",
+    "@types/sinon": "^2.3.7",
+    "@types/sinon-chai": "^2.7.29",
     "chai": "^4.1.2",
     "cucumber": "^3.1.0",
     "cucumber-html-reporter": "^3.0.4",
-    "cucumber.decorators": "^1.4.0"
+    "cucumber.decorators": "^1.4.0",
+    "mocha": "^4.0.1",
+    "node-cmd": "^3.0.0",
+    "sinon": "^4.1.1",
+    "sinon-chai": "^2.14.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "@types/adal": "^1.0.29",
+    "@types/request": "^2.0.7",
+    "adal-node": "^0.1.23",
+    "dotenv": "^4.0.0",
+    "request": "^2.83.0"
   }
 }
