@@ -1,0 +1,33 @@
+{
+  "name": "odata.client",
+  "version": "1.0.0",
+  "description": "Typescript OData Client",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "tsc -p tsconfig.json",
+    "test": "cucumberjs test/features -r test/steps -f progress -f json:test/report/report.json",
+    "posttest": "node ./task/report.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlippieCoetser/OData.Client.git"
+  },
+  "keywords": [
+    "typescript",
+    "odata"
+  ],
+  "author": "Pj Coetser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FlippieCoetser/OData.Client/issues"
+  },
+  "homepage": "https://github.com/FlippieCoetser/OData.Client#readme",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/cucumber": "^2.0.4",
+    "chai": "^4.1.2",
+    "cucumber": "^3.1.0",
+    "cucumber-html-reporter": "^3.0.4",
+    "cucumber.decorators": "^1.4.0"
+  }
+}
