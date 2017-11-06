@@ -5,3 +5,4 @@ E2E/steps/*.js
 test/*.js
 src/*.js
 .env
+demo/**/*.js
