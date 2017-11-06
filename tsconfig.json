@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
         "isolatedModules": false,
@@ -10,6 +10,7 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
+        "lib": ["es2015", "es2015.iterable", "dom"],
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "typeRoots": [
@@ -19,6 +20,10 @@
     "include": [
         "./src/**/*.ts",
         "./demo/**/*.ts",
-        "./test/**/*.ts"
+        "./test/**/*.ts",
+        "./E2E/**/*.ts"
+    ],
+    "exclude": [
+        "./node_modules/@types/**/*.d.ts"
     ]
 }

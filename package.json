@@ -4,7 +4,7 @@
   "description": "Typescript OData Client",
   "main": "index.js",
   "scripts": {
-    "preE2E": "tsc -p typescript.E2E.json",
+    "preE2E": "tsc -p tsconfig.json",
     "E2E": "cucumberjs E2E/features -r E2E/steps -f progress -f json:E2E/report/report.json",
     "postE2E": "node ./task/report.js",
     "lint": "tslint -c tslint.json ./src/**/*.ts",
