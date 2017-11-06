@@ -1,5 +1,5 @@
-import { OData } from "./OData";
-import { EntitySet } from "./EntitySet";
+import { OData } from "../../src/OData";
+import { EntitySet } from "../../src/EntitySet";
 import { Customer } from "../interfaces/Customer";
 
 export class Customers extends EntitySet<Customer> {
