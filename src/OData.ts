@@ -1,5 +1,5 @@
 import * as request from "request";
-import { Customers } from "./Customers";
+import { Customers } from "../demo/entities/Customers";
 
 export class OData {
     public options: request.CoreOptions;
@@ -12,7 +12,7 @@ export class OData {
     }
 
     public customers = () =>
-        new Customers(this);
+        new Customers(this)
 
     public request = () =>
         request.defaults(this.options)

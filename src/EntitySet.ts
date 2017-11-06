@@ -15,7 +15,7 @@ export interface Delete<T> {
 export class EntitySet<T> {
     public name: string;
     constructor(private OData: OData) {
-    };
+    }
 
     public create: Create<T> = async(entity: T) => new Promise<T>((resolve, reject) =>
         this.OData
@@ -26,8 +26,8 @@ export class EntitySet<T> {
                 },
                 body: JSON.stringify(entity),
             }, (error, header, data) =>
-                error ? reject(error) : resolve(JSON.parse(data))
-            )
+                error ? reject(error) : resolve(JSON.parse(data)),
+            ),
     )
 
     public retrieve: Retrieve<T> = async (id?: any) => new Promise<any>((resolve, reject) =>
@@ -36,17 +36,17 @@ export class EntitySet<T> {
             .get(this.uri(id), (error, header, data) => {
                 if (data === "") {
                     return resolve("");
-                };
+                }
                 return error ? reject(error) : resolve(this.map(id)(data));
-            })
-    );
+            }),
+    )
 
     public delete: Delete<T> = async(id: string) => new Promise<void>((resolve, reject) =>
         this.OData
             .request()
             .delete(this.uri(id), (error, header, data) =>
-                error ? reject(error) : resolve()
-            )
+                error ? reject(error) : resolve(),
+            ),
     )
 
      private uri(id?: string) {
