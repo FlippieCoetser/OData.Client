@@ -1,28 +1,28 @@
-import { Cucumber, Given, When , Then } from 'cucumber.decorators'
-import { expect } from 'chai'
+import { Cucumber, Given, When , Then } from "cucumber.decorators";
+import { expect } from "chai";
 
 
 @Cucumber
-export class test {
-    public answer: number
-    @Given('I start with {int}')
+export class Test {
+    public answer: number;
+    @Given("I start with {int}")
     public start(input: number) {
-        this.answer = input
+        this.answer = input;
     }
 
-    @When('I add {int}')
+    @When("I add {int}")
     public add(input:  number) {
-        this.answer = this.answer + input
+        this.answer = this.answer + input;
     }
 
-    @When('I multiply by {int}')
+    @When("I multiply by {int}")
     public multiply(input: number) {
-        this.answer = this.answer * input
+        this.answer = this.answer * input;
     }
 
-    @Then('I end up with {int}')
+    @Then("I end up with {int}")
     public end(input: number) {
-        expect(this.answer).to.equal(input)
+        expect(this.answer).to.equal(input);
     }
 
 }
