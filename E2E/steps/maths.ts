@@ -1,10 +1,11 @@
-import { Cucumber, Given, When , Then } from "cucumber.decorators";
+import { Cucumber, Before, Given, When , Then } from "cucumber.decorators";
 import { expect } from "chai";
 
 
 @Cucumber
 export class Test {
     public answer: number;
+
     @Given("I start with {int}")
     public start(input: number) {
         this.answer = input;
