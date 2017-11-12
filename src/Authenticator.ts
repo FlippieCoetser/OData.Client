@@ -21,7 +21,7 @@ export class Authenticator {
                let clientSecret = this.parameters.clientSecret;
                return new Promise<string>((resolve, reject) => {
                    this.context.acquireTokenWithClientCredentials(resource, clientId, clientSecret,
-                       (error, tokenResponse) => error ? reject(error) : resolve(tokenResponse.accessToken),
+                       (error, token: any) => error ? reject(error) : resolve(token.accessToken),
                    );
                });
     }
