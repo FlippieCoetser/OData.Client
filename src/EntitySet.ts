@@ -1,4 +1,4 @@
-import { OData } from "./OData";
+import * as request from "request";
 
 export interface Operations<T> {
     create(entity: T): Promise<T>;
@@ -9,13 +9,12 @@ export interface Operations<T> {
 
 export class EntitySet<T> implements Operations<T> {
     protected name: string;
-    constructor(private OData: OData) {
+    constructor(private options: request.CoreOptions) {
     }
-
     public async create(entity: T): Promise<T> {
         return new Promise<T>((resolve, reject) =>
-        this.OData
-            .request()
+            request
+            .defaults(this.options)
             .post(this.uri(), {
                 headers: {
                 "content-type": "application/json",
@@ -31,8 +30,8 @@ export class EntitySet<T> implements Operations<T> {
 
     public async retrieve(id?: string): Promise<any> {
         return new Promise<any>((resolve, reject) =>
-        this.OData
-            .request()
+            request
+            .defaults(this.options)
             .get(this.uri(id), (error, header, data) => {
                 if (data === "") {
                     return resolve("");
@@ -41,17 +40,15 @@ export class EntitySet<T> implements Operations<T> {
             }),
         );
     }
-
     public async delete(id: string): Promise<void> {
         return new Promise<void>((resolve, reject) =>
-        this.OData
-            .request()
+            request
+            .defaults(this.options)
             .delete(this.uri(id), (error, header, data) =>
                 error ? reject(error) : resolve(),
             ),
         );
     }
-
      private uri(id?: string) {
          return id === undefined ? this.name : this.name + `(${id})`;
      }
