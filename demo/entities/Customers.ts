@@ -6,5 +6,5 @@ export class Customers extends EntitySet<Customer> {
     constructor(OData: OData) {
         super(OData);
         this.name = this.constructor.name;
-    };
+    }
 }

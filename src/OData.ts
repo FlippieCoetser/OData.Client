@@ -11,8 +11,9 @@ export class OData {
         }
     }
 
-    public customers = () =>
-        new Customers(this)
+    public get customers() {
+        return new Customers(this);
+    }
 
     public request = () =>
         request.defaults(this.options)
