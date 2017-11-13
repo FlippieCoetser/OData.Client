@@ -5,7 +5,7 @@ var options = {
        jsonFile: 'E2E/report/report.json',
        output: 'E2E/report/report.html',
        reportSuiteAsScenarios: true,
-       launchReport: false,
+       launchReport: true,
    };
 
    reporter.generate(options);
