@@ -41,6 +41,11 @@ export class Customers {
         this.retrievedEntity = await this.api[this.entitySet].retrieve(this.entity.Id);
     }
 
+    @When(/^I delete a ([^"]*)?$/)
+    public async deleteEntity(entityName: string) {
+        return await this.api[this.entitySet].delete(this.entity.Id);
+    }
+
     @Then(/^([^"]*)? should exist$/)
     public async entityShouldExist(entityName: string) {
         let entity = await this.api[this.entitySet].retrieve(this.entity.Id);
@@ -51,4 +56,5 @@ export class Customers {
     public async entityShouldBeReturned(entityName: string) {
         expect(this.retrievedEntity.Id).eql(this.entity.Id);
     }
+
 }
