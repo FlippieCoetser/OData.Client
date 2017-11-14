@@ -1,0 +1,18 @@
+BODY:
+{
+    "@odata.context": "https://idiscover-api-qa.azurewebsites.net/odata/$metadata#Customers/$entity",
+    "@odata.etag": "W/\"YmluYXJ5J0FBQUFBQUFHUnpBPSc=\"",
+    "Name": "TestCustomer",
+    "CreateDate": "2017-05-02T07:52:57.557Z",
+    "EditDate": "2017-11-13T19:24:38.7611395Z",
+    "Street": null,
+    "Zip": null,
+    "City": null,
+    "Phone": null,
+    "Id": "abad1dea-f046-0000-0012-bb3ece8090ce",
+    "SizeId": null,
+    "CountryId": null,
+    "LastUpdated": "AAAAAAAGRzA=",
+    "IsDeleted": false,
+    "IsModified": false
+}

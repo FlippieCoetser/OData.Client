@@ -1,0 +1,19 @@
+POST: https://idiscover-api-qa.azurewebsites.net/odata/Customers
+
+BODY:
+{
+            "@odata.etag": "W/\"YmluYXJ5J0FBQUFBQUFHUnk0PSc=\"",
+            "Name": "TestCustomer",
+            "CreateDate": "2017-05-02T07:52:57.557Z",
+            "EditDate": "2017-11-13T18:05:50.22Z",
+            "Street": null,
+            "Zip": null,
+            "City": null,
+            "Phone": null,
+            "Id": "abad1dea-f046-0000-0012-bb3ece8090ce",
+            "SizeId": null,
+            "CountryId": null,
+            "LastUpdated": "AAAAAAAGRy4=",
+            "IsDeleted": false,
+            "IsModified": false
+}

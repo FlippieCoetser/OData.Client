@@ -1,0 +1,62 @@
+STATUS: 200 OK
+BODY:
+{
+    "@odata.context": "https://idiscover-api-qa.azurewebsites.net/odata/$metadata#Customers/$entity",
+    "@odata.etag": "W/\"YmluYXJ5J0FBQUFBQUFHUnpFPSc=\"",
+    "Name": "TestCustomer",
+    "CreateDate": "2017-05-02T07:52:57.557Z",
+    "EditDate": "2017-11-13T19:29:58.68Z",
+    "Street": null,
+    "Zip": null,
+    "City": null,
+    "Phone": null,
+    "Id": "abad1dea-f046-0000-0012-bb3ece8090ce",
+    "SizeId": null,
+    "CountryId": null,
+    "LastUpdated": "AAAAAAAGRzE=",
+    "IsDeleted": false,
+    "IsModified": false
+}
+
+STATUS: 200 OK
+BODY:
+{
+    "@odata.context": "https://idiscover-api-qa.azurewebsites.net/odata/$metadata#Customers",
+    "value": [
+        {
+            "@odata.etag": "W/\"YmluYXJ5J0FBQUFBQUFBVDZnPSc=\"",
+            "Name": "Customer",
+            "CreateDate": "2017-01-27T09:14:22.853Z",
+            "EditDate": "2017-01-27T09:14:22.853Z",
+            "Street": "Street Name 49722C8E",
+            "Zip": "6627",
+            "City": "City Name",
+            "Phone": "+491485508396627",
+            "Id": "9e03bc33-a600-4b73-ad00-096cfe037c35",
+            "SizeId": "c16883eb-3f4b-3515-9153-caa1c9e5bfc8",
+            "CountryId": "DE",
+            "LastUpdated": "AAAAAAAAT6g=",
+            "IsDeleted": false,
+            "IsModified": false
+        },
+        {
+            "@odata.etag": "W/\"YmluYXJ5J0FBQUFBQUFDbTBFPSc=\"",
+            "Name": "123",
+            "CreateDate": "2017-05-23T13:52:48.273Z",
+            "EditDate": "2017-05-23T13:52:49.123Z",
+            "Street": "111",
+            "Zip": "",
+            "City": "",
+            "Phone": "",
+            "Id": "66c1b11b-b72b-450e-a7b7-0e988d1ccd7a",
+            "SizeId": "c16883eb-3f4b-3515-9152-caa1c9e5bfc8",
+            "CountryId": "AX",
+            "LastUpdated": "AAAAAAACm0E=",
+            "IsDeleted": false,
+            "IsModified": false
+        },
+        .
+        .
+        .
+    ]
+}
