@@ -4,6 +4,7 @@
         "node_modules/**/": true,
         "src/**/*.js": true,
         "test/**/*.js": true,
-        "E2E/**/*.js": true
+        "E2E/**/*.js": true,
+        "demo/**/*.js": true
     }
 }

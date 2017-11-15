@@ -1,6 +1,8 @@
 import * as request from "request";
 
-export interface Operations<T> {
+export type Options = request.CoreOptions;
+
+interface Operations<T> {
     create(entity: T): Promise<T>;
     retrieve(id: string): Promise<T>;
     retrieve(): Promise<T[]>;
