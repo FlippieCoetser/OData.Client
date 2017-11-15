@@ -11,7 +11,7 @@ export class OData {
         }
     }
 
-    public get customers() {
+    public get Customers() {
         return new Customers(this.options);
     }
     private _setAuthorizationToken = (token) => {
