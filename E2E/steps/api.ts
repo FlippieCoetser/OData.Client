@@ -1,18 +1,13 @@
 import * as dotenv from "dotenv";
 import { Authenticator, Parameters } from "../../src/Authenticator";
 import { OData } from "../../src/OData";
-
+export { OData } from "../../src/OData";
 export class API {
-    private static loadVariables() {
+    private static loadVariables(): void {
         const result = dotenv.config();
         if (result.error) {
             throw result.error;
         }
-    }
-
-    private static async getToken() {
-        let authenticator = new Authenticator(API.paramaters);
-        return await authenticator.getToken();
     }
     private static get paramaters(): Parameters {
         API.loadVariables();
@@ -24,7 +19,11 @@ export class API {
             tenant: process.env.TENANT,
         };
     }
-    public static async get() {
+    private static async getToken(): Promise<string> {
+        let authenticator = new Authenticator(API.paramaters);
+        return await authenticator.getToken();
+    }
+    public static async get(): Promise<OData> {
         let token = await API.getToken();
         let endPoint = "https://idiscover-api-qa.azurewebsites.net/odata/";
         return new OData(endPoint, token);
