@@ -1,5 +1,4 @@
 @Customer
-@API
 Feature: Create.Customer
     Background: Clean API
         Given a clean api

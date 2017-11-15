@@ -1,5 +1,4 @@
 @Customer
-@API
 Feature: Delete.Customer
     Background: Clean API
         Given a clean api
@@ -7,4 +6,4 @@ Feature: Delete.Customer
 
     Scenario: Delete.Customer
         When I delete a customer
-        Then customer does not exist
+        Then customer should not exist
