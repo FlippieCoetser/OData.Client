@@ -4,6 +4,7 @@ export interface Operations<T> {
     create(entity: T): Promise<T>;
     retrieve(id: string): Promise<T>;
     retrieve(): Promise<T[]>;
+    update(id: string, parameters: any): Promise<void>;
     delete(id: string): Promise<void>;
 }
 
@@ -64,7 +65,7 @@ export class EntitySet<T> implements Operations<T> {
             ),
         );
     }
-     private uri(id?: string) {
+     private uri(id?: string): string {
          return id === undefined ? this.name : this.name + `(${id})`;
      }
      private map(id?: string) {

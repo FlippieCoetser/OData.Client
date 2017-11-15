@@ -2,7 +2,7 @@ import { Cucumber, Before, Given, When, Then } from "cucumber.decorators";
 import { expect } from "chai";
 import { Customers } from "./customers";
 
-interface CRUD {
+interface IEntity {
     dummy: any;
     property: any;
     temp: any;
@@ -16,7 +16,7 @@ interface CRUD {
 
 @Cucumber
 export class Entity {
-    private Entity: CRUD;
+    private Entity: IEntity;
 
     @Before("@Customer")
     public async beforeCustomer() {

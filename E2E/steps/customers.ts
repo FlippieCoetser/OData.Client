@@ -5,6 +5,7 @@ import { API, OData } from "./api";
 import { Customer } from "../../demo/interfaces/Customer";
 
 export class Customers {
+    private api: OData;
     constructor() {
         this.name = "Customers";
         this.property = {
@@ -19,22 +20,23 @@ export class Customers {
             IsModified: false,
         };
     }
-    private api: OData;
     public name: string;
     public property;
     public dummy: Customer;
-    public temp;
+    public temp: Customer;
     public async init() {
         this.api = await API.get();
     }
-    public async clean() {
+    public async clean(): Promise<void> {
         return await this.api.Customers.delete(this.dummy.Id);
     }
 
-    public async create() {
+    public async create(): Promise<Customer> {
         return await this.api.Customers.create(this.dummy);
     }
-    public async retrieve(id?: string) {
+    public async retrieve(id: any): Promise<Customer>;
+    public async retrieve(): Promise<Customer[]>;
+    public async retrieve(id?: string): Promise<any> {
         this.temp = await this.api.Customers.retrieve(this.dummy.Id);
         return this.temp;
     }
