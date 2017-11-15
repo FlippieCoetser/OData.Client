@@ -40,6 +40,21 @@ export class EntitySet<T> implements Operations<T> {
             }),
         );
     }
+
+    public async update(id: string, parameters: any): Promise<void> {
+        return new Promise<void>((resolve, reject) =>
+            request
+            .defaults(this.options)
+            .patch(this.uri(id), {
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(parameters),
+            }, (error, header, data) =>
+                error ? reject(error) : resolve(),
+        ),
+    );
+    }
     public async delete(id: string): Promise<void> {
         return new Promise<void>((resolve, reject) =>
             request
