@@ -1,6 +1,6 @@
 node_modules/
 desktop.ini
-E2E/report/
+E2E/report/*.*
 E2E/steps/*.js
 test/*.js
 src/*.js

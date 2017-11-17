@@ -1,10 +1,8 @@
 import { Cucumber, Before, Given, When, Then } from "cucumber.decorators";
 import { expect } from "chai";
-import { Customers } from "./customers";
+import { Customers, customer, customerName } from "./customers";
 
 interface IEntity {
-    dummy: any;
-    property: any;
     temp: any;
     init(): any;
     clean(): any;
@@ -16,61 +14,67 @@ interface IEntity {
 
 @Cucumber
 export class Entity {
-    private Entity: IEntity;
+    private API: IEntity;
+    private Entity: any;
+    private Property: any;
+    private Cache: any;
 
     @Before("@Customer")
     public async beforeCustomer() {
-        this.Entity = new Customers();
-        await this.Entity.init();
+        this.API = new Customers();
+        await this.API.init();
+        this.Entity = customer;
+        this.Property = customerName;
     }
 
     @Given(/^a clean api$/)
     public async clean() {
-        return await this.Entity.clean();
+        return await this.API.clean();
     }
     @Given(/^([^"]*)? does not exist$/)
-    public async entityDoesNotExist(entityName: string) {
-        expect(await this.Entity.retrieve()).eql("");
+    public async entityDoesNotExist(entity: string) {
+        expect(await this.API.retrieve()).eql("");
     }
 
     @When(/^I create a ([^"]*)?$/)
-    public async creatEntity(entityName: string) {
-        return await this.Entity.create();
+    public async creatEntity(entity: string) {
+        return await this.API.create();
     }
 
     @When(/^I retrieve a ([^"]*)?$/)
-    public async retrieveEntity(entityName: string) {
-        return await this.Entity.retrieve();
+    public async retrieveEntity(entity: string) {
+        this.Cache = await this.API.retrieve();
+        return this.Cache;
     }
 
     @When(/^I update a ([^"]*)?$/)
-    public async updateEntity(entityName: string) {
-        return await this.Entity.update();
+    public async updateEntity(entity: string) {
+        return await this.API.update();
     }
 
     @When(/^I delete a ([^"]*)?$/)
-    public async deleteEntity(entityName: string) {
-        return await this.Entity.delete();
+    public async deleteEntity(entity: string) {
+        return await this.API.delete();
     }
 
     @Then(/^([^"]*)? should exist$/)
-    public async entityShouldExist(entityName: string) {
-        expect((await this.Entity.retrieve()).Id).eql(this.Entity.dummy.Id);
+    public async entityShouldExist(entity: string) {
+        expect((await this.API.retrieve()).Id).eql(this.Entity.Id);
     }
 
     @Then(/^([^"]*)? should be returned$/)
-    public async entityShouldBeReturned(entityName: string) {
-        expect(this.Entity.temp.Id).eql(this.Entity.dummy.Id);
+    public async entityShouldBeReturned(entity: string) {
+        expect(this.Cache.Id).eql(this.Entity.Id);
     }
 
     @Then(/^([^"]*)? should be updated$/)
-    public async entityShouldBeUpdated(entityName: string) {
-        expect(this.Entity.property.Name).eql((await this.Entity.retrieve()).Name);
+    public async entityShouldBeUpdated(entity: string) {
+        expect(this.Property.Name).eql((await this.API.retrieve()).Name);
     }
 
     @Then(/^([^"]*)? should not exist$/)
-    public async entityShouldNotExist(entityName: string) {
-        expect(await this.Entity.retrieve()).eql("");
+    public async entityShouldNotExist(entity: string) {
+        expect(await this.API.retrieve()).eql("");
     }
 
 }
