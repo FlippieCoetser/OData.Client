@@ -4,19 +4,20 @@ import { CRUD } from "./CRUD";
 export type Options = request.CoreOptions;
 
 export class EntitySet<T> implements CRUD<T> {
-    private request;
-    private options: Options;
+    private _request;
+    private _options: Options;
     public name: string;
     constructor(endPoint: string, token?: string) {
-        this.options = {};
-        this.options.baseUrl = endPoint;
+        this._options = {
+            baseUrl: endPoint,
+        };
         this._setAuthorizationToken(token);
-        this.request = request.defaults(this.options);
+        this._request = request.defaults(this._options);
     }
     // Create Operation
     public async create(entity: T): Promise<T> {
         return new Promise<T>((resolve, reject) =>
-            this.request
+            this._request
                 .post(this._uri(),
                     this._parameter(entity),
                     (error, header, data) =>
@@ -29,7 +30,7 @@ export class EntitySet<T> implements CRUD<T> {
     public async retrieve(): Promise<T[]>;
     public async retrieve(id?: string): Promise<any> {
         return new Promise<any>((resolve, reject) =>
-            this.request
+            this._request
                 .get(this._uri(id),
                     (error, header, data) => {
                         if (data === "") {
@@ -43,7 +44,7 @@ export class EntitySet<T> implements CRUD<T> {
     // Update Operation
     public async update(id: string, parameters: any): Promise<void> {
         return new Promise<void>((resolve, reject) =>
-            this.request
+            this._request
                 .patch(this._uri(id),
                     this._parameter(parameters),
                     (error, header, data) =>
@@ -54,7 +55,7 @@ export class EntitySet<T> implements CRUD<T> {
     // Delete Operation
     public async delete(id: string): Promise<void> {
         return new Promise<void>((resolve, reject) =>
-            this.request
+            this._request
                 .delete(this._uri(id), (error, header, data) =>
                     error ? reject(error) : resolve(),
                 ),
@@ -79,7 +80,8 @@ export class EntitySet<T> implements CRUD<T> {
     }
     // When Bearer token was supplied adapt request header
     private _setAuthorizationToken(token?: string) {
-        this.options.headers = {};
-        this.options.headers.authorization = `Bearer ${token}`;
+        this._options.headers = {
+            authorization: `Bearer ${token}`,
+        };
     }
 }
