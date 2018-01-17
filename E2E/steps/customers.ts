@@ -3,10 +3,9 @@
 // ***************************************************************************
 import { Customer } from "../../demo/interfaces/Customer";
 import { Customers, CRUD } from "../../demo/entities/Customers";
+import { Token } from "./token";
 
-export { Customers, CRUD };
-
-export const customer: Customer = {
+const customer: Customer = {
         Id: "abad1dea-f046-0000-0012-bb3ece8090ce",
         Name: "TestCustomer",
         CreateDate: "2017-05-02T07:52:57.555Z",
@@ -15,6 +14,15 @@ export const customer: Customer = {
         IsModified: false,
 };
 
-export const customerName = {
+const property = {
     Name: "CustomerName",
 };
+
+export {CRUD };
+export async function loadCustomer(Entity: any) {
+    let token = await Token.get();
+    let endPoint = process.env.END_POINT;
+    Entity.API = new Customers(endPoint, token);
+    Entity.Entity = customer;
+    Entity.Property = property;
+}
