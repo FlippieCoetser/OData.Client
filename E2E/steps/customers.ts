@@ -1,9 +1,12 @@
 // ***************************************************************************
+// * Boilerplate
+// ***************************************************************************
+import { Token } from "./token";
+// ***************************************************************************
 // * Test Customer
 // ***************************************************************************
 import { Customer } from "../../demo/interfaces/Customer";
-import { Customers, CRUD } from "../../demo/entities/Customers";
-import { Token } from "./token";
+import { Customers } from "../../demo/entities/Customers";
 
 const customer: Customer = {
         Id: "abad1dea-f046-0000-0012-bb3ece8090ce",
@@ -18,7 +21,6 @@ const property = {
     Name: "CustomerName",
 };
 
-export {CRUD };
 export async function loadCustomer(Entity: any) {
     let token = await Token.get();
     let endPoint = process.env.END_POINT;
