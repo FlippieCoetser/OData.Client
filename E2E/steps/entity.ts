@@ -1,12 +1,13 @@
 // ***************************************************************************
 // * Boilerplate
 // ***************************************************************************
-import { Cucumber, Before, Given, When, Then } from "cucumber.decorators";
+import { Cucumber, Before, After, Given, When, Then } from "cucumber.decorators";
 import { expect } from "chai";
+import { CRUD } from "../../src/CRUD";
 // ***************************************************************************
 // * Test Customer
 // ***************************************************************************
-import { CRUD, loadCustomer } from "./customers";
+import { loadCustomer } from "./customers";
 
 @Cucumber
 export class Entity {
@@ -18,15 +19,22 @@ export class Entity {
     @Before("@Customer")
     public async beforeCustomer() {
         await loadCustomer(this);
+        await this.API.delete(this.Entity.Id);
     }
 
-    @Given(/^a clean api$/)
-    public async clean() {
-        return await this.API.delete(this.Entity.Id);
+    @After("@Customer")
+    public async afterCustomer(test: any) {
+        await this.API.delete(this.Entity.Id);
     }
+
     @Given(/^([^"]*)? does not exist$/)
     public async entityDoesNotExist(entity: string) {
         expect(await this.API.retrieve(this.Entity.Id)).eql("");
+    }
+
+    @Given(/^([^"]*)? does exist$/)
+    public async entityDoesExist(entity: string) {
+        expect((await this.API.retrieve(this.Entity.Id)).Id).eql(this.Entity.Id);
     }
 
     @When(/^I create a ([^"]*)?$/)

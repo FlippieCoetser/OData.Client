@@ -1,8 +1,8 @@
 @Customer
 Feature: Delete.Customer
-    Background: Clean API
-        Given a clean api
-        And I create a customer
+    Background: customer exist
+        Given I create a customer
+        And customer does exist
 
     Scenario: Delete.Customer
         When I delete a customer
