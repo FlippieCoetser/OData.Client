@@ -8,7 +8,6 @@ import { CRUD } from "../../src/CRUD";
 // ***************************************************************************
 import { Customer } from "../interfaces/Customer";
 
-export { CRUD };
 export class Customers extends EntitySet<Customer> implements CRUD<Customer> {
     constructor(endPoint: string, token?: string) {
         super(endPoint, token);
