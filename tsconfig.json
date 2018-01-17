@@ -20,7 +20,6 @@
     "include": [
         "./src/**/*.ts",
         "./demo/**/*.ts",
-        "./test/**/*.ts",
         "./E2E/**/*.ts"
     ],
     "exclude": [
