@@ -3,11 +3,10 @@
 // ***************************************************************************
 import { Cucumber, Before, Given, When, Then } from "cucumber.decorators";
 import { expect } from "chai";
-import { Token } from "./token";
 // ***************************************************************************
 // * Test Customer
 // ***************************************************************************
-import { CRUD, Customers, customer, customerName } from "./customers";
+import { CRUD, loadCustomer } from "./customers";
 
 @Cucumber
 export class Entity {
@@ -18,11 +17,7 @@ export class Entity {
 
     @Before("@Customer")
     public async beforeCustomer() {
-        let token = await Token.get();
-        let endPoint = "https://idiscover-api-qa.azurewebsites.net/odata/";
-        this.API = new Customers(endPoint, token);
-        this.Entity = customer;
-        this.Property = customerName;
+        await loadCustomer(this);
     }
 
     @Given(/^a clean api$/)
