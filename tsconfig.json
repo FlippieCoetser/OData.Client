@@ -19,7 +19,6 @@
     },
     "include": [
         "./src/**/*.ts",
-        "./demo/**/*.ts",
         "./E2E/**/*.ts"
     ],
     "exclude": [

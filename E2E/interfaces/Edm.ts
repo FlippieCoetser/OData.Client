@@ -54,7 +54,7 @@ export namespace Edm {
     export type Geometry = string;
     // Point in a flat-earth coordinate system
     export type GeometryPoint = string;
-    //  Line string in a flat-earth coordinate system
+    // Line string in a flat-earth coordinate system
     export type GeometryLineString = string;
     // Polygon in a flat-earth coordinate system
     export type GeometryPolygon = string;

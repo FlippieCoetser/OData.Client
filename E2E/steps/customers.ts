@@ -5,8 +5,8 @@ import { Token } from "./token";
 // ***************************************************************************
 // * Test Customer
 // ***************************************************************************
-import { Customer } from "../../demo/interfaces/Customer";
-import { Customers } from "../../demo/entities/Customers";
+import { Customer } from "../interfaces/Customer";
+import { Customers } from "../entities/Customers";
 
 const customer: Customer = {
         Id: "abad1dea-f046-0000-0012-bb3ece8090ce",
