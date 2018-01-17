@@ -19,11 +19,13 @@ export class Entity {
     @Before("@Customer")
     public async beforeCustomer() {
         await loadCustomer(this);
+        // Ensure a clean API
         await this.API.delete(this.Entity.Id);
     }
 
     @After("@Customer")
     public async afterCustomer(test: any) {
+        // Ensure a clean API
         await this.API.delete(this.Entity.Id);
     }
 
@@ -73,7 +75,7 @@ export class Entity {
         expect(this.Property.Name).eql((await this.API.retrieve(this.Entity.Id)).Name);
     }
 
-    @Then(/^([^"]*)? should not exist$/)
+    @Then(/^([^"]*)? should be deleted$/)
     public async entityShouldNotExist(entity: string) {
         expect(await this.API.retrieve(this.Entity.Id)).eql("");
     }

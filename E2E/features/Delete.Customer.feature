@@ -6,4 +6,4 @@ Feature: Delete.Customer
 
     Scenario: Delete.Customer
         When I delete a customer
-        Then customer should not exist
+        Then customer should be deleted
